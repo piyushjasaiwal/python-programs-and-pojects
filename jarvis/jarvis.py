@@ -6,6 +6,7 @@ import webbrowser
 import wikipedia
 import os
 import datetime
+import random
 
 ''' music dictionary '''
 dictionary = {
@@ -91,7 +92,7 @@ def takeCommand():
 
     try:
         print("Recognizing ...")
-        query = r.recognize_google(audio,lang = 'en-in')
+        query = r.recognize_google(audio)
 
         print(f"Order given - {query}\n\n")
 
@@ -130,6 +131,9 @@ if __name__ == "__main__":
 
         elif "music" in query:
             # code for music
+            num = random.randint(1,18)
+            statement = music_dictionary(num)
+            webbrowser.open(statement)
             pass
 
         elif "time" in query:
@@ -138,4 +142,5 @@ if __name__ == "__main__":
         elif "vs code" in query:
             path = "C:\\Users\\DELL\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code"
             os.startfile(path)
+            
 
