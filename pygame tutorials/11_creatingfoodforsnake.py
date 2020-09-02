@@ -30,24 +30,29 @@ velocity_y = 0
 
 while not exit_game:
 
-    for event in pygame.event.get():        
+    for event in pygame.event.get():  
+
+        if abs(snake_x - food_x) <= 50 and abs(snake_y - food_y) <= 50:
+            food_x = random.randint(0,width)
+            food_y = random.randint(0,height)
+
         if event.type == pygame.QUIT:
             exit_game = True
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                velocity_x = 7
+                velocity_x = 10
                 velocity_y = 0
 
             elif event.key == pygame.K_LEFT:
-                velocity_x = -7
+                velocity_x = -10
                 velocity_y = 0
             elif event.key == pygame.K_UP:
-                velocity_y = -7
+                velocity_y = -10
                 velocity_x = 0
                 
             elif event.key == pygame.K_DOWN:
-                velocity_y = 7
+                velocity_y = 10
                 velocity_x = 0
 
     snake_x += velocity_x
